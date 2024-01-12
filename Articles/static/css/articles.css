@@ -1,0 +1,66 @@
+/* styles.css */
+
+
+main {
+    padding: 20px;
+}
+
+article {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+article img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+article p {
+    margin-bottom: 20px;
+}
+
+article h1,
+article h2,
+article h3 {
+    color: #333;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Add more styles as needed */
+
+#dummyAdContainer {
+    margin-top: 20px;
+}
+
+#nextButtonContainer {
+    margin-top: 20px;
+}
+
+#nextButton {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#timerText {
+    margin-top: 10px;
+}
+
+/* Media Query for Responsive Design */
+@media only screen and (max-width: 600px) {
+    article {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+    <script src="/static/django_tinymce/init_tinymce.js"></script>
+    <title>{% block title %}TheFlipperEconomics{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="{% url 'home' %}" id="logo">TheFlipperEconomics</a></h1>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'contact_us' %}">Connect</a></li>
+                <li><a href="{% url 'about_us' %}">About</a></li>
+                <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}
+        
+        {% endblock %}
+    </main>
+    <footer>
+        <p>TheFlipperEconomics, Product of 1445 Enterprise &copy; {% now "Y" %}</p>
+    </footer>
+</body>
+</html>

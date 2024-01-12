@@ -1,0 +1,44 @@
+<!-- templates/contact_us.html -->
+{% extends 'layout.html' %}
+
+{% block title %}Contact Us - TheFlipperEconomics{% endblock %}
+
+{% block content %}
+    <main>
+        <section>
+            <article>
+                <h2>Contact 1445 Enterprise</h2>
+                <p>Have questions, suggestions, or just want to connect? We'd love to hear from you!</p>
+
+                <h3>Contact Information</h3>
+                <ul>
+                    <li><strong>Email:</strong> info@1445enterprise.com</li>
+                    <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+                    <li><strong>Address:</strong> 1445 Innovation Avenue, Tech City, TX 12345</li>
+                </ul>
+
+                <h3>Get in Touch</h3>
+                <p>Use the form below to send us a message:</p>
+
+                <form action="#" method="post">
+                    <!-- Include form fields for name, email, subject, and message -->
+                    <!-- You may use your preferred method for handling form submissions -->
+
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" required>
+
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </article>
+        </section>
+    </main>
+{% endblock %}

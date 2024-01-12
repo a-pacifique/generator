@@ -1,0 +1,44 @@
+/* articlelist.css */
+
+main {
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Media Query for Responsive Design */
+@media only screen and (max-width: 600px) {
+    li {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+}
