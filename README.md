@@ -1,1 +1,1 @@
-"# TheFlipperEconomics" 
+"# generator" 
