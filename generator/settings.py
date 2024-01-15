@@ -117,7 +117,11 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '172.31.41.204', '51.20.85.225', 'the
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'generator/static'),
+]
 
 
 STATIC_ROOT = '/var/www/generator/staticfiles'
