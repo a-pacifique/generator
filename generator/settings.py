@@ -121,9 +121,6 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '172.31.41.204', '51.20.85.225', 'the
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'generator/Articles/static'),
-]
 
 
 STATIC_ROOT = '/var/www/generator/staticfiles'
