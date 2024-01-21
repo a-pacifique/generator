@@ -112,7 +112,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '172.31.41.204', '51.20.85.225', 'theflippereconomics.online']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '13.60.13.186', 'theflippereconomics.online']
 
 
 
