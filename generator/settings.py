@@ -10,8 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-
-import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,6 +25,9 @@ SECRET_KEY = 'django-insecure-je9_+d@r=ovpl&u-9j#-kf&2-3xs!+b!qnxbajv&2-5j)(c1*5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ALLOWED_HOSTS = []
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Articles',
     'tinymce',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -112,16 +114,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '13.60.13.186', 'theflippereconomics.online', 'www.theflippereconomics.online']
-
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-
+STATIC_URL = 'static/'
 
 
 STATIC_ROOT = '/var/www/generator/staticfiles'
@@ -132,7 +129,7 @@ STATIC_ROOT = '/var/www/generator/staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
+import os
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -148,3 +145,8 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 
+# Optional: Set the SITEMAP_URLS setting to include your sitemap views
+SITEMAP_URLS = [
+    'Articles.sitemaps.StaticViewSitemap',
+    'Articles.sitemaps.ArticleSitemap',
+]
