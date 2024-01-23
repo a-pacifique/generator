@@ -19,7 +19,6 @@ class Article(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        # Assuming you have an 'article_detail' view for displaying the article
         return reverse('article_detail', args=[str(self.slug)])
 
     def __str__(self):
