@@ -1,6 +1,8 @@
 # models.py
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
+
 
 class Article(models.Model):
     title = models.CharField(max_length=200)
@@ -15,6 +17,10 @@ class Article(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        # Assuming you have an 'article_detail' view for displaying the article
+        return reverse('article_detail', args=[str(self.slug)])
 
     def __str__(self):
         return self.title
