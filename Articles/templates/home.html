@@ -1,21 +1,22 @@
-<!-- templates/home.html -->
 {% extends 'layout.html' %}
 
 {% block title %}Home - TheFlipperEconomics{% endblock %}
 
 {% block content %}
-    <main>
-        <section>
-            {% for article in articles %}
-                <article>
-                    <a href="{% url 'article_detail' article.slug %}">
-                        <h2>{{ article.title }}</h2>
-                        <img src="{{ article.image.url }}" alt="{{ article.title }}">
-                    </a>
-                    <p>{{ article.content|truncatewords:50 }}</p>
-                    <a href="{% url 'article_detail' article.slug %}">Read More</a>
-                </article>
-            {% endfor %}
-        </section>
-    </main>
+    <section class="container mt-5">
+        <main>
+            <section class="row">
+                {% for article in articles %}
+                    <article class="col-md-6 mb-4">
+                        <a href="{% url 'article_detail' article.slug %}" class="text-decoration-none">
+                            <h2 class="mb-3">{{ article.title }}</h2>
+                            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid mb-3">
+                        </a>
+                        <p>{{ article.content|truncatewords:50 }}</p>
+                        <a href="{% url 'article_detail' article.slug %}" class="btn btn-primary">Read More</a>
+                    </article>
+                {% endfor %}
+            </section>
+        </main>
+    </section>
 {% endblock %}
