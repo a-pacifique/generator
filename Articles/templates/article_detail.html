@@ -4,14 +4,14 @@
 {% block title %}{{ article.title }} - TheFlipperEconomics{% endblock %}
 
 {% block content %}
-    <article>
-        <h1>{{ article.title }}</h1>
+    <article class="container my-4">
+        <h1 class="mb-3">{{ article.title }}</h1>
         <p>Written by Admin on {{ article.pub_date|date:"F d, Y" }}</p>
         
         {% if article.image %}
-            <img src="{{ article.image.url }}" alt="{{ article.title }}">
+            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid mb-3">
         {% endif %}
         
-        <p>{{ article.content|safe }}</p>
+        <p>{{ article.content|safe }}</p>        
     </article>
 {% endblock %}
