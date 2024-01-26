@@ -17,6 +17,7 @@ urlpatterns = [
     path('contact-us/', views.contact_us, name='contact_us'),
     path('articles/<slug:slug>/', views.article_detail, name='article_detail'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('ads.txt', views.ads_txt, name='ads_txt'),
 ]
 
 if settings.DEBUG:
