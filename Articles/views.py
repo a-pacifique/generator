@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 from .forms import ArticleForm
 from django.db.models import Q
-
+from django.http import HttpResponse
 
 def home(request):
     # Fetch the first three articles
@@ -88,3 +88,8 @@ def delete_article(request, slug):
         return redirect('article_list')
     
     return render(request, 'c', {'article': article})
+
+
+def ads_txt(request):
+    content = "google.com, pub-1335840781247344, DIRECT, f08c47fec0942fa0"
+    return HttpResponse(content, content_type="text/plain")
