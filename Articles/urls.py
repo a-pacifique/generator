@@ -18,7 +18,7 @@ urlpatterns = [
     path('articles/<slug:slug>/', views.article_detail, name='article_detail'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('ads.txt', views.ads_txt, name='ads_txt'),
-    path('startjob/', views.generate_pcode, name='generate_pcode'),
+    # path('startjob/', views.generate_pcode, name='generate_pcode'),
 ]
 
 if settings.DEBUG:
