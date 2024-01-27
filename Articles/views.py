@@ -1,4 +1,5 @@
 # articles/views.py
+import hashlib
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 from .forms import ArticleForm
@@ -93,3 +94,20 @@ def delete_article(request, slug):
 def ads_txt(request):
     content = "google.com, pub-1335840781247344, DIRECT, f08c47fec0942fa0"
     return HttpResponse(content, content_type="text/plain")
+
+
+def task_completion(request):
+    # Retrieve Job ID and Worker ID from the session
+    job_id = request.session.get('job_id')
+    worker_id = request.session.get('worker_id')
+
+    # PCODE Secret Key
+    secret_key = "c20eb93d2436604848f373635614d90ff1bd13987e3d2545aea4bee5f1e88b43"
+
+    # Generate PCODE
+    final_string = f"{job_id}{worker_id}{secret_key}"
+    pcode = f"pw-{hashlib.sha256(final_string.encode()).hexdigest()}"
+
+    # Display PCODE to the worker
+    return HttpResponse(f"Worker, your PCODE is: {pcode}")
+
