@@ -23,7 +23,8 @@ def privacy_policy(request):
 def article_list(request):
     articles = Article.objects.all()
     return render(request, 'article_list.html', {'articles': articles})
-
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Article
 
 def article_detail(request, slug):
     article = get_object_or_404(Article, slug=slug)
@@ -40,18 +41,17 @@ def article_detail(request, slug):
     # Check if the current article is the last one (ID 11) and the ad is clicked
     is_last_article = article.id == 11 and ad_clicked
 
-    # Get Job ID and Worker ID from the URL parameters
-    job_id = request.GET.get('job', '')
-    worker_id = request.GET.get('worker', '')
-
     return render(request, 'article_detail.html', {
         'article': article,
         'next_article': next_article,
         'ad_clicked': ad_clicked,
         'is_last_article': is_last_article,
-        'job_id': job_id,
-        'worker_id': worker_id,
     })
+
+
+def generate_fixed_pcode():
+    # Replace this with your fixed Pcode
+    return '12345'
 
 
 def create_article(request):
@@ -92,20 +92,3 @@ def delete_article(request, slug):
 def ads_txt(request):
     content = "google.com, pub-1335840781247344, DIRECT, f08c47fec0942fa0"
     return HttpResponse(content, content_type="text/plain")
-
-
-def task_completion(request):
-    # Retrieve Job ID and Worker ID from the session
-    job_id = request.session.get('job_id')
-    worker_id = request.session.get('worker_id')
-
-    # PCODE Secret Key
-    secret_key = "c20eb93d2436604848f373635614d90ff1bd13987e3d2545aea4bee5f1e88b43"
-
-    # Generate PCODE
-    final_string = f"{job_id}{worker_id}{secret_key}"
-    pcode = f"pw-{hashlib.sha256(final_string.encode()).hexdigest()}"
-
-    # Display PCODE to the worker
-    return HttpResponse(f"Worker, your PCODE is: {pcode}")
-
