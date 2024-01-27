@@ -25,9 +25,6 @@ def article_list(request):
     return render(request, 'article_list.html', {'articles': articles})
 
 
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Article
-
 def article_detail(request, slug):
     article = get_object_or_404(Article, slug=slug)
 
@@ -43,17 +40,18 @@ def article_detail(request, slug):
     # Check if the current article is the last one (ID 11) and the ad is clicked
     is_last_article = article.id == 11 and ad_clicked
 
+    # Get Job ID and Worker ID from the URL parameters
+    job_id = request.GET.get('job', '')
+    worker_id = request.GET.get('worker', '')
+
     return render(request, 'article_detail.html', {
         'article': article,
         'next_article': next_article,
         'ad_clicked': ad_clicked,
         'is_last_article': is_last_article,
+        'job_id': job_id,
+        'worker_id': worker_id,
     })
-
-
-def generate_fixed_pcode():
-    # Replace this with your fixed Pcode
-    return '12345'
 
 
 def create_article(request):
