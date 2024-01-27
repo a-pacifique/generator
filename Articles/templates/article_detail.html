@@ -6,74 +6,18 @@
 {% block content %}
     <article class="container my-4">
         <h1 class="mb-3">{{ article.title }}</h1>
-	<script type="text/javascript">
-	atOptions = {
-		'key' : '80be9106c74d29a1f7341d8a906b0f93',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-	document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/80be9106c74d29a1f7341d8a906b0f93/invoke.js"></scr' + 'ipt>');
-</script>
         <p>Written by Admin on {{ article.pub_date|date:"F d, Y" }}</p>
-	    <script type="text/javascript">
-	atOptions = {
-		'key' : '80be9106c74d29a1f7341d8a906b0f93',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-	document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/80be9106c74d29a1f7341d8a906b0f93/invoke.js"></scr' + 'ipt>');
-</script>
         
         {% if article.image %}
             <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid mb-3">
         {% endif %}
-	    <script type="text/javascript">
-	atOptions = {
-		'key' : '80be9106c74d29a1f7341d8a906b0f93',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-	document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/80be9106c74d29a1f7341d8a906b0f93/invoke.js"></scr' + 'ipt>');
-</script>
         
         <p>{{ article.content|safe }}</p>
-	    <script type="text/javascript">
-	atOptions = {
-		'key' : '80be9106c74d29a1f7341d8a906b0f93',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-	document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/80be9106c74d29a1f7341d8a906b0f93/invoke.js"></scr' + 'ipt>');
-</script>
 
         {% if is_last_article %}
             <!-- Display predefined Pcode for the last article -->
             <p class="mb-3"><strong>Pcode:</strong> 12345</p>
-        {% endif %}
-
-        <!-- Google AdSense Code -->
-        <div class="mb-4">
-            <!-- Replace the following code with your actual AdSense ad code -->
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1335840781247344"
-     crossorigin="anonymous"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-1335840781247344"
-                 data-ad-slot="7890123456"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
+        {% endif %}    
 
         {% if next_article %}
             <div id="nextButtonContainer" style="display: none;">
@@ -128,10 +72,12 @@
                 });
             </script>
         {% else %}
-            <!-- Display message if no next article -->
-            {% if not ad_clicked %}
-                <p class="mb-3">Pcode:1234567890</p>
-            {% endif %}
+            <!-- SproutGigs PCODE Generation -->
+            {% if job_id and worker_id and is_last_article %}
+            <div class="mb-4">
+                <p class="mb-3"><strong>PCODE:</strong> <a href="{% url 'generate_pcode' %}?job={{ job_id }}&worker={{ worker_id }}" target="_blank">Generate PCODE</a></p>
+            </div>    
+            {% endif %}            
         {% endif %}
     </article>
 {% endblock %}
