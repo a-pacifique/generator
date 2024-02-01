@@ -27,26 +27,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 
 def article_detail(request, slug):
-    article = get_object_or_404(Article, slug=slug)
+    article = Article.objects.get(slug=slug)
 
-    # Check if there is a next article
-    try:
-        next_article = Article.objects.filter(id__gt=article.id).order_by('id')[0]
-    except IndexError:
-        next_article = None
+    # Get suggested articles (you may need to define your own logic here)
+    suggested_articles = Article.objects.exclude(slug=slug).order_by('-pub_date')[:3]
 
-    # Check if the user clicked an ad
-    ad_clicked = request.GET.get('ad_clicked', False)
-
-    # Check if the current article is the last one (ID 11) and the ad is clicked
-    is_last_article = article.id == 11 and ad_clicked
-
-    return render(request, 'article_detail.html', {
+    context = {
         'article': article,
-        'next_article': next_article,
-        'ad_clicked': ad_clicked,
-        'is_last_article': is_last_article,
-    })
+        'suggested_articles': suggested_articles,
+    }
+
+    return render(request, 'article_detail.html', context)
 
 
 def generate_fixed_pcode():
